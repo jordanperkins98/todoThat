@@ -72,6 +72,6 @@ class Todo {
         return this.#subtasks;
     }
 
-}
+};
 
-export default Todo
+export default Todo;
