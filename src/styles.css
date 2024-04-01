@@ -1,0 +1,22 @@
+
+html{
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+nav{
+    background-color: #333;
+    color: white;
+    padding: 0.8rem;
+    text-align: center;
+    display: flex;
+    
+}
+
+.left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
