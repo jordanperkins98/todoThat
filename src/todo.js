@@ -7,13 +7,13 @@ class Todo {
     #project;
     #subtasks
 
-    constructor(title, description, priority='Normal', dueDate=null, project='default'){
+    constructor(title, description, priority='Normal', dueDate=null){
         this.#title = title,
         this.#description = description,
         this.#priority = priority,
         this.#dueDate = dueDate,
         this.#labels = []
-        this.#project = project,
+        this.#project = 'default',
         this.#subtasks = [];
     }
 
