@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TodoThat - A Todo App</title>
   </head>
+
   <body>
-    <nav>
-      <div class="left">
+    <nav class="sidebar">
+      <div class="initial">
         <h1 class="logo">Todo<span>that</span></h1>
-        <div class="links">
-          <a href="#" class="about">About</a>
-          <a href="#" class="contact">Contact</a>
-        </div>
+        <img src="" alt="bell icon" class="notifications" />
+        <img src="" alt="sidebar icon" class="closeSidebar" />
       </div>
-      <div class="right">
-        <button class="dark-mode">Dark Mode</button>
-        <button class="newTodo">New Task</button>
+      <button class="newTodo">Add task</button>
+      <div class="links">
+        <div class="link"><a href="#" class="search">Search</a></div>
+        <div class="link"><a href="#" class="inbox">Inbox</a></div>
+        <div class="link"><a href="#" class="today">Today</a></div>
+        <div class="link"><a href="#" class="upcoming">Upcoming</a></div>
+        <div class="link"><a href="#" class="labels">Labels</a></div>
+      </div>
+      <div class="projects">
+        <h2>Projects</h2>
+        <ul>
+          <li><a href="#">Home</a></li>
+        </ul>
       </div>
     </nav>
     <div class="content"></div>
-
-
   </body>
 </html>
