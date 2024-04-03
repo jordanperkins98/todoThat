@@ -5,6 +5,9 @@ module.exports = {
     mode: 'development',
     entry:'./src/ui.js',
     devtool: 'inline-source-map',
+    devServer: {
+        static: './dist',
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'TodoThat - A Todo List App',

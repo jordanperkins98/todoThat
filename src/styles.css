@@ -96,14 +96,14 @@ h1 > span{
     color:rgb(61, 127, 248)
 }
 
-.links{
+.links .projects{
     display: flex;
     flex-direction: column;
     font-size: 1rem;
 
 }
 
-.link{
+.link, .projectHeading, .projectList>li{
     padding: 0.5rem;
     border-radius: 0.5rem;
     margin: 0 0.7rem;
@@ -111,20 +111,40 @@ h1 > span{
     justify-content: start;
 }
 
-.link > a{
+.link > a, .projectList>li>a{
     color: white;
     font-size: 1rem;
     font-weight: 400;
 
 }
 
-.link:hover{
+.link:hover, .projectList>li:hover, .projectHeading:hover{
     background-color: #839fb82a;
     color: white;
+    cursor: pointer;
 }
 
 
+.projectHeading{
+    font-size: 1rem;
+    font-weight: 700;
+    
+}
 
+.newTodo{
+    appearance: none;
+    border: none;
+    background: transparent; /* or the specific color value */
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0 0.7rem;
+    display: flex;
+    justify-content: start;
 
+}
 
+.newTodo:hover{
+    cursor: pointer;
+    background-color: #839fb82a;
 
+}
