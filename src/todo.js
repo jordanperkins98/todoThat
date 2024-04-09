@@ -5,7 +5,8 @@ class Todo {
     #dueDate;
     #labels;
     #project;
-    #subtasks
+    #subtasks;
+    static #todoList = [];
 
     constructor(title, description, priority='Normal', dueDate=null){
         this.#title = title,
@@ -18,9 +19,14 @@ class Todo {
     }
 
     static new(title, description, priority, dueDate, labels, project){
-        return new Todo(title, description, priority, dueDate, labels, project)   
+        const newTodo =  new Todo(title, description, priority, dueDate, labels, project);
+        this.#todoList.push(newTodo);
+        return newTodo;
     }
 
+    static get todoList(){
+        return this.#todoList;
+    }
 
     get title (){
         return this.#title;
