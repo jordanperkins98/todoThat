@@ -14,6 +14,27 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
     console.log(Todo.todoList)
     
     sidebar();
+    addEventListener();
+
+
+    Todo.todoList.forEach((element) =>{
+        const content = document.querySelector('.content');
+
+        const newDiv = document.createElement('div');
+
+        newDiv.classList.add('todo');
+
+        const todoTitle = document.createElement('p');
+
+        todoTitle.textContent = element.title;
+
+        newDiv.appendChild(todoTitle)
+        content.appendChild(newDiv)
+
+    })
+
+
+
     
     function sidebar() {
         function iconToDiv(imgPath, divNameForicon) {
@@ -44,12 +65,13 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         button.prepend(addIcon);
     }
     
-    document.querySelector('.toggleButton').addEventListener('click', function() {
-        document.querySelector('.sidebar').classList.toggle('hide');
-        document.querySelector('.toggleButton').classList.toggle('show');
-     
-      });
+    function addEventListener() {
+        document.querySelector('.toggleButton').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('hide');
+            document.querySelector('.toggleButton').classList.toggle('show');
 
+        });
+    }
 })();
 
 
