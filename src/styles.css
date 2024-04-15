@@ -224,7 +224,6 @@ h1 > span{
 .todo{
     border: red solid 1px;
     height: 3rem;
-    border-radius: 2rem;
     display: flex;
     align-items: center;
     width: 70rem;
