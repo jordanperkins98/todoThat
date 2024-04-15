@@ -217,7 +217,7 @@ h1 > span{
 .content{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: end;
     border: red solid 1px;
 }
 
@@ -228,4 +228,14 @@ h1 > span{
     display: flex;
     align-items: center;
     width: 70rem;
+}
+
+.container{
+    border: red solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height:80vh;
+    
+    
 }

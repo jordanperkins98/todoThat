@@ -18,7 +18,7 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
 
 
     Todo.todoList.forEach((element) =>{
-        const content = document.querySelector('.content');
+        const container = document.querySelector('.container');
 
         const newDiv = document.createElement('div');
 
@@ -29,7 +29,7 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         todoTitle.textContent = element.title;
 
         newDiv.appendChild(todoTitle)
-        content.appendChild(newDiv)
+        container.appendChild(newDiv)
 
     })
 
