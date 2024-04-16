@@ -12,6 +12,7 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
     newTodo.addLabel('Chores')
     
     console.log(Todo.todoList)
+
     
     sidebar();
     addEventListener();
