@@ -29,7 +29,19 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         todoTitle.textContent = element.title;
 
         newDiv.appendChild(todoTitle)
-        container.appendChild(newDiv)
+
+        const day = document.createElement('div');
+
+        day.classList.add('day');
+        day.classList.add('todo');
+
+        const currentDay = document.createElement('p');
+        currentDay.textContent = 'Today';
+
+        day.appendChild(currentDay);
+
+        container.appendChild(day);
+        container.appendChild(newDiv);
 
     })
 
