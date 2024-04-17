@@ -17,7 +17,7 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
     sidebar();
     addEventListener();
 
-
+    //TODO refactor this whole function, need to seperate into a todo and just the header bar. initialRender() or something like that.
     Todo.todoList.forEach((element) =>{
         const container = document.querySelector('.container');
 
@@ -26,10 +26,17 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         newDiv.classList.add('todo');
 
         const todoTitle = document.createElement('p');
+        const deleteButton = document.createElement('button');
 
         todoTitle.textContent = element.title;
+        deleteButton.textContent = 'Delete'
+
+        deleteButton.classList.add('delete');
+
 
         newDiv.appendChild(todoTitle)
+        newDiv.appendChild(deleteButton)
+
 
         const day = document.createElement('div');
 
