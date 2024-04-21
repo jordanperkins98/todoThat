@@ -8,35 +8,18 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
 (function main(){
 
     const newTodo = Todo.new('Take the bins out','Take the bins out for Mum & Dad','Normal',null,null)
-
     newTodo.addLabel('Chores')
     
-    console.log(Todo.todoList)
-
-    
     sidebar();
-    addEventListener();
 
     //TODO refactor this whole function, need to seperate into a todo and just the header bar. initialRender() or something like that.
-    Todo.todoList.forEach((element) =>{
+    renderTodoList();
+    addEventListener();
+    
+    function renderTodoList() {
+        document.querySelector('.container').innerHTML = '';
+
         const container = document.querySelector('.container');
-
-        const newDiv = document.createElement('div');
-
-        newDiv.classList.add('todo');
-
-        const todoTitle = document.createElement('p');
-        const deleteButton = document.createElement('button');
-
-        todoTitle.textContent = element.title;
-        deleteButton.textContent = 'Delete'
-
-        deleteButton.classList.add('delete');
-
-
-        newDiv.appendChild(todoTitle)
-        newDiv.appendChild(deleteButton)
-
 
         const day = document.createElement('div');
 
@@ -49,13 +32,30 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         day.appendChild(currentDay);
 
         container.appendChild(day);
-        container.appendChild(newDiv);
 
-    })
+        Todo.todoList.forEach((element, index) => {
+            
 
+            const newDiv = document.createElement('div');
 
+            newDiv.classList.add('todo');
 
-    
+            newDiv.dataset.index = index;
+
+            const todoTitle = document.createElement('p');
+            const deleteButton = document.createElement('button');
+
+            todoTitle.textContent = element.title;
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete');
+
+            newDiv.appendChild(todoTitle);
+            newDiv.appendChild(deleteButton);
+            container.appendChild(newDiv);
+
+        });
+    }
+
     function sidebar() {
         function iconToDiv(imgPath, divNameForicon) {
             const element = document.createElement('div');
@@ -91,6 +91,15 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
             document.querySelector('.toggleButton').classList.toggle('show');
 
         });
+
+        document.querySelector('.delete').addEventListener('click', function(e){
+            //TODO delete todo
+            const indexToDelete = e.target.parentElement.dataset.index;
+           
+            Todo.deleteTodo(indexToDelete);
+            renderTodoList();
+
+        })
     }
 })();
 

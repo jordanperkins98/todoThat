@@ -24,6 +24,10 @@ class Todo {
         return newTodo;
     }
 
+    static deleteTodo(index){
+        this.#todoList.splice(index,1)
+    }
+
     static get todoList(){
         return this.#todoList;
     }
