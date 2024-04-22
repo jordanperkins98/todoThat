@@ -269,3 +269,29 @@ h1 > span{
     font-weight: 700;
 }
 
+
+.hidden{
+    visibility: hidden;
+}
+
+.form-container{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.form-container > form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+
+}
