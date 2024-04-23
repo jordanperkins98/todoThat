@@ -100,6 +100,11 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
             renderTodoList();
 
         })
+
+        document.querySelector('.newTodo').addEventListener('click', function(e) {
+            const formContainer = document.querySelector('.form-container');
+            formContainer.classList.toggle('hidden');
+        })
     }
 })();
 
