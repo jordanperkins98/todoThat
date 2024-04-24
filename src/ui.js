@@ -4,11 +4,15 @@ import './styles.css';
 import bellIcon from './Assets/bell-outline.png';
 import sidebarIcon from './Assets/sidebar.png';
 import addTaskIcon from './Assets/plus-circle-custom.png';
+import closeIcon from './Assets/close.png';
 
 (function main(){
 
     const newTodo = Todo.new('Take the bins out','Take the bins out for Mum & Dad','Normal',null,null)
     newTodo.addLabel('Chores')
+
+
+    const closeImg = document.querySelector('.close').src = closeIcon
     
     sidebar();
 
@@ -102,6 +106,11 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         })
 
         document.querySelector('.newTodo').addEventListener('click', function(e) {
+            const formContainer = document.querySelector('.form-container');
+            formContainer.classList.toggle('hidden');
+        })
+
+        document.querySelector('.close').addEventListener('click', function(e) {
             const formContainer = document.querySelector('.form-container');
             formContainer.classList.toggle('hidden');
         })
