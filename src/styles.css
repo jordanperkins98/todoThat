@@ -298,12 +298,15 @@ h1 > span{
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem;
+    justify-content: space-between;
 
 
 }
 
 .form-group label{
-    flex-basis: 3.2em;
+    flex-basis: 4em;
+
+
 }
 
 input{
