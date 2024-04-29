@@ -4,7 +4,7 @@ import './styles.css';
 import bellIcon from './Assets/bell-outline.png';
 import sidebarIcon from './Assets/sidebar.png';
 import addTaskIcon from './Assets/plus-circle-custom.png';
-import closeIcon from './Assets/close.png';
+
 
 (function main(){
 
@@ -12,13 +12,14 @@ import closeIcon from './Assets/close.png';
     newTodo.addLabel('Chores')
 
 
-    const closeImg = document.querySelector('.close').src = closeIcon
     
     sidebar();
 
     //TODO refactor this whole function, need to seperate into a todo and just the header bar. initialRender() or something like that.
     renderTodoList();
     addEventListener();
+    
+    console.log("Test");
     
     function renderTodoList() {
         document.querySelector('.container').innerHTML = '';
@@ -72,7 +73,7 @@ import closeIcon from './Assets/close.png';
         }
     
         document.querySelector('.icons').appendChild(iconToDiv(bellIcon, 'notificationsIcon'));
-        const toggleButton = iconToDiv(sidebarIcon, 'siderbarIcon');
+        const toggleButton = iconToDiv(sidebarIcon, 'sidebarIcon');
         toggleButton.classList.add('toggleButton');
     
     
