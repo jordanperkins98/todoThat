@@ -107,14 +107,54 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         })
 
         document.querySelector('.newTodo').addEventListener('click', function(e) {
-            const formContainer = document.querySelector('.form-container');
-            formContainer.classList.toggle('hidden');
+            const container = document.querySelector('.container');
+            
+            const form = document.createElement('form');
+            const titleDiv = document.createElement('div')
+            titleDiv.classList.add('form-item')
+
+            const titleInput = document.createElement('input');
+        
+            titleInput.classList.add('form-input');
+        
+            titleInput.type = 'text';
+            titleInput.id = 'title';
+            titleInput.name = 'title';
+            titleInput.placeholder = 'Title'
+            titleInput.required = true;
+        
+            titleDiv.appendChild(titleInput);
+            
+
+            form.classList.add('newTodoSection');
+            form.appendChild(titleDiv);
+
+            const descDiv = document.createElement('div');
+            descDiv.classList.add('form-item');
+
+            const descInput = document.createElement('input');
+        
+            descInput.classList.add('form-input');
+        
+            descInput.type = 'text';
+            descInput.id = 'description';
+            descInput.name = 'description';
+            descInput.placeholder = 'Description'
+            descInput.required = true;
+        
+            descDiv.appendChild(descInput);
+            form.appendChild(descDiv);
+
+
+
+            container.appendChild(form)
+
+
+
+
+
         })
 
-        document.querySelector('.close').addEventListener('click', function(e) {
-            const formContainer = document.querySelector('.form-container');
-            formContainer.classList.toggle('hidden');
-        })
     }
 })();
 

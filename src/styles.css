@@ -269,3 +269,15 @@ h1 > span{
 .hidden{
     visibility: hidden;
 }
+
+.newTodoSection{
+    display: flex;
+    flex-direction: column;
+    width: 80%
+}
+
+.form-input{
+    appearance: none;
+    border: none;
+    width: 100%;
+}
