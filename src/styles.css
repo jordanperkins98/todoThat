@@ -281,3 +281,29 @@ h1 > span{
     border: none;
     width: 100%;
 }
+
+.item-3{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+#dueDate{
+    width: 6rem;
+
+}
+
+#title{
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+#description{
+    height: 2rem;
+    line-height: normal;
+    padding-top: 0;
+    padding-bottom: 0;
+
+}
+

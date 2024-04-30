@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TodoThat - A Todo App</title>
-  </head>
 
-  <body>
-    <nav class="sidebar">
-      <div class="initial">
-        <h1 class="logo">Todo<span>that</span></h1>
-        <div class="icons">
-        </div>
-      </div>
-      <button class="newTodo">
-        Add task
-      </button>
-      <div class="links">
-        <div class="link"><a href="#" class="search">Search</a></div>
-        <div class="link"><a href="#" class="inbox">Inbox</a></div>
-        <div class="link"><a href="#" class="today">Today</a></div>
-        <div class="link"><a href="#" class="upcoming">Upcoming</a></div>
-        <div class="link"><a href="#" class="labels">Labels</a></div>
-      
-      </div>
-      <div class="projects">
-        <div class="projectHeading">
-          <h2>My Projects</h2>
-        </div>
-        
-        <ul class="projectList">
-          <li><a href="#">Home</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div class="content">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TodoThat - A Todo App</title>
+</head>
 
-    
-      <div class="container">
-        
+<body>
+  <nav class="sidebar">
+    <div class="initial">
+      <h1 class="logo">Todo<span>that</span></h1>
+      <div class="icons">
       </div>
     </div>
-  </body>
-</html>
+    <button class="newTodo">
+      Add task
+    </button>
+    <div class="links">
+      <div class="link"><a href="#" class="search">Search</a></div>
+      <div class="link"><a href="#" class="inbox">Inbox</a></div>
+      <div class="link"><a href="#" class="today">Today</a></div>
+      <div class="link"><a href="#" class="upcoming">Upcoming</a></div>
+      <div class="link"><a href="#" class="labels">Labels</a></div>
 
+    </div>
+    <div class="projects">
+      <div class="projectHeading">
+        <h2>My Projects</h2>
+      </div>
+
+      <ul class="projectList">
+        <li><a href="#">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content">
+
+
+    <div class="container">
+      
+    </div>
+    <form class="newTodoSection">
+      <div class="form-item">
+        <input class="form-input" type="text" id="title" name="title" placeholder="Title" required="">
+      </div>
+      <div class="form-item">
+        <textarea class="form-input" id="description" name="description" placeholder="Description" required=""></textarea>
+      </div>
+      <div class="form-item item-3">
+        <input class="form-input" type="date" id="dueDate" name="dueDate">
+        <select class="form-select" id="priority" name="priority">
+          <option value="" disabled selected>Priority</option>
+          <option value="low">Low</option>
+          <option value="normal">Normal</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
