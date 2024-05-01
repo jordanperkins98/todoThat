@@ -284,9 +284,38 @@ h1 > span{
 
 .item-3{
     display: flex;
-    justify-content: start;
     align-items: center;
     gap: 1rem;
+}
+.left{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+
+}
+
+.right{
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+input[type="submit"]{
+    appearance: none;
+    border: none;
+    
+
+}
+
+#submit{
+    appearance: none;
+    border: green solid 2px;
+    border-radius: 0.5rem;
+    background-color: inherit;
+    color: green;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
 }
 
 #dueDate{
@@ -304,6 +333,7 @@ h1 > span{
     line-height: normal;
     padding-top: 0;
     padding-bottom: 0;
+    resize: none;
 
 }
 

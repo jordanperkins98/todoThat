@@ -49,13 +49,18 @@
         <textarea class="form-input" id="description" name="description" placeholder="Description" required=""></textarea>
       </div>
       <div class="form-item item-3">
-        <input class="form-input" type="date" id="dueDate" name="dueDate">
-        <select class="form-select" id="priority" name="priority">
-          <option value="" disabled selected>Priority</option>
-          <option value="low">Low</option>
-          <option value="normal">Normal</option>
-          <option value="high">High</option>
-        </select>
+        <div class="left">
+          <input class="form-input" type="date" id="dueDate" name="dueDate">
+          <select class="form-select" id="priority" name="priority">
+            <option value="" disabled hidden selected>Priority</option>
+            <option value="low">Low</option>
+            <option value="normal">Normal</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="right">
+          <input type="submit" id="submit" value="Add Task">
+        </div>
       </div>
     </form>
   </div>
