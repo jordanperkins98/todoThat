@@ -8,7 +8,7 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
 
 (function main(){
 
-    const newTodo = Todo.new('Take the bins out','Take the bins out for Mum & Dad','Normal',null,null)
+    const newTodo = Todo.new('Test task','Take the bins out for Mum & Dad','Normal',null,null)
     newTodo.addLabel('Chores')
 
 
@@ -107,53 +107,50 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         })
 
         document.querySelector('.newTodo').addEventListener('click', function(e) {
+            if (document.querySelector('.newTodoSection')) return;
+            
             const container = document.querySelector('.container');
             
+            const formContainer = document.createElement('div');
+
+            formContainer.classList.add('formContainer');
+
             const form = document.createElement('form');
-            const titleDiv = document.createElement('div')
-            titleDiv.classList.add('form-item')
-
-            const titleInput = document.createElement('input');
-        
-            titleInput.classList.add('form-input');
-        
-            titleInput.type = 'text';
-            titleInput.id = 'title';
-            titleInput.name = 'title';
-            titleInput.placeholder = 'Title'
-            titleInput.required = true;
-        
-            titleDiv.appendChild(titleInput);
-            
-
             form.classList.add('newTodoSection');
-            form.appendChild(titleDiv);
-
-            const descDiv = document.createElement('div');
-            descDiv.classList.add('form-item');
-
-            const descInput = document.createElement('input');
-        
-            descInput.classList.add('form-input');
-        
-            descInput.type = 'text';
-            descInput.id = 'description';
-            descInput.name = 'description';
-            descInput.placeholder = 'Description'
-            descInput.required = true;
-        
-            descDiv.appendChild(descInput);
-            form.appendChild(descDiv);
-
-
-
-            container.appendChild(form)
-
-
+            form.innerHTML = `<div class="form-item">
+            <input class="form-input" type="text" id="title" name="title" placeholder="Task name" required="">
+          </div>
+          <div class="form-item">
+            <textarea class="form-input" id="description" name="description" placeholder="Description" required=""></textarea>
+          </div>
+          <div class="form-item item-3">
+            <div class="left">
+              <input class="form-input" type="date" id="dueDate" name="dueDate">
+              <select class="form-select" id="priority" name="priority">
+                <option value="" disabled hidden selected>Priority</option>
+                <option value="low">Low</option>
+                <option value="normal">Normal</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="right">
+              <button class="cancel-button" id="cancel">Cancel</button>
+              <input type="submit" id="submit" value="Add Task">
+            </div>
+          </div>`;    
 
 
+            formContainer.appendChild(form)
+            container.appendChild(formContainer);
+
+            document.querySelector('.cancel-button').addEventListener('click', function(e){
+                e.preventDefault();
+                formContainer.remove();
+            })
 
         })
+
+        
 
     }
 })();
