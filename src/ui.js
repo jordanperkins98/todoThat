@@ -17,7 +17,7 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
 
     //TODO refactor this whole function, need to seperate into a todo and just the header bar. initialRender() or something like that.
     renderTodoList();
-    addEventListener();
+
     
     console.log("Test");
     
@@ -57,6 +57,8 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
             newDiv.appendChild(todoTitle);
             newDiv.appendChild(deleteButton);
             container.appendChild(newDiv);
+
+            addEventListener();
 
         });
     }
@@ -148,7 +150,21 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
                 formContainer.remove();
             })
 
+            document.querySelector('.newTodoSection').addEventListener('submit', function(e){
+                e.preventDefault();
+                const title = document.querySelector('#title').value;
+                const description = document.querySelector('#description').value;
+                const dueDate = document.querySelector('#dueDate').value;
+                const priority = document.querySelector('#priority').value;
+                console.log('Attempting to create todo...');
+                const newTodo = Todo.new(title, description, priority, dueDate,null);
+                renderTodoList();
+
+            })
+
         })
+
+
 
         
 
