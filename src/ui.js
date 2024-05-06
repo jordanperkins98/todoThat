@@ -20,47 +20,64 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
 
     
     console.log("Test");
-    
+
+    function createElementWithClass(tag, className) {
+        const element = document.createElement(tag);
+        if (className) {
+            element.classList.add(className);
+        }
+        return element;
+    }
+
+    function createTodoElement(element, index) {
+        const newDiv = createElementWithClass('div', 'todo');
+        newDiv.dataset.index = index;
+
+        const todoTitle = createElementWithClass('p');
+        todoTitle.textContent = element.title;
+
+        const priority = createElementWithClass('p');
+        priority.textContent = `Priority - ${element.priority}`;
+
+        const deleteButton = createElementWithClass('button', 'delete');
+        deleteButton.textContent = 'Delete';
+
+        const leftDiv = createElementWithClass('div');
+        leftDiv.appendChild(todoTitle);
+
+        const rightDiv = createElementWithClass('div', 'todo-rightDiv');
+        rightDiv.appendChild(priority);
+        rightDiv.appendChild(deleteButton);
+
+        newDiv.appendChild(leftDiv);
+        newDiv.appendChild(rightDiv);
+
+        return newDiv;
+    }
+
     function renderTodoList() {
         document.querySelector('.container').innerHTML = '';
 
         const container = document.querySelector('.container');
 
-        const day = document.createElement('div');
-
-        day.classList.add('day');
-        day.classList.add('todo');
-
-        const currentDay = document.createElement('p');
+        const day = createElementWithClass('div', 'day');
+        const currentDay = createElementWithClass('p');
         currentDay.textContent = 'Today';
-
         day.appendChild(currentDay);
-
         container.appendChild(day);
 
+        const todoContainer = createElementWithClass('div', 'todoContainer');
+        container.appendChild(todoContainer);
+
         Todo.todoList.forEach((element, index) => {
-            
-
-            const newDiv = document.createElement('div');
-
-            newDiv.classList.add('todo');
-
-            newDiv.dataset.index = index;
-
-            const todoTitle = document.createElement('p');
-            const deleteButton = document.createElement('button');
-
-            todoTitle.textContent = element.title;
-            deleteButton.textContent = 'Delete';
-            deleteButton.classList.add('delete');
-
-            newDiv.appendChild(todoTitle);
-            newDiv.appendChild(deleteButton);
-            container.appendChild(newDiv);
-
-            addEventListener();
-
+            if (element.dueDate !== new Date().toLocaleDateString('en-gb') && element.dueDate !== null) {
+                return;
+            }
+            const todoElement = createTodoElement(element, index);
+            todoContainer.appendChild(todoElement);
         });
+
+        addEventListener();
     }
 
     function sidebar() {
@@ -130,9 +147,9 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
               <input class="form-input" type="date" id="dueDate" name="dueDate">
               <select class="form-select" id="priority" name="priority">
                 <option value="" disabled hidden selected>Priority</option>
-                <option value="low">Low</option>
-                <option value="normal">Normal</option>
-                <option value="high">High</option>
+                <option value="Low">Low</option>
+                <option value="Normal">Normal</option>
+                <option value="High">High</option>
               </select>
             </div>
             <div class="right">
@@ -154,20 +171,15 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
                 e.preventDefault();
                 const title = document.querySelector('#title').value;
                 const description = document.querySelector('#description').value;
-                const dueDate = document.querySelector('#dueDate').value;
+                let dueDate = document.querySelector('#dueDate').value;
+                dueDate = new Date(dueDate).toLocaleDateString('en-gb');
                 const priority = document.querySelector('#priority').value;
                 console.log('Attempting to create todo...');
                 const newTodo = Todo.new(title, description, priority, dueDate,null);
                 renderTodoList();
 
             })
-
         })
-
-
-
-        
-
     }
 })();
 
