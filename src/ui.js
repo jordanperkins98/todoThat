@@ -10,8 +10,6 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
 
     const newTodo = Todo.new('Test task','Take the bins out for Mum & Dad','Normal',null,null)
     newTodo.addLabel('Chores')
-
-
     
     sidebar();
 
@@ -55,27 +53,52 @@ import addTaskIcon from './Assets/plus-circle-custom.png';
         return newDiv;
     }
 
+    function createTodoHeader(title) {
+        const TodoHeader = createElementWithClass('div', 'TodoHeader');
+        const TodoHeaderTitle = createElementWithClass('p');
+        TodoHeaderTitle.textContent = title;
+        TodoHeader.appendChild(TodoHeaderTitle);
+        return TodoHeader;
+    }
+
+    function createTodoContainer(className) {
+        const todoContainer = createElementWithClass('div', 'todoContainer');
+        todoContainer.classList.add(className);
+        return todoContainer;
+    }
+
     function renderTodoList() {
+
         document.querySelector('.container').innerHTML = '';
 
         const container = document.querySelector('.container');
 
-        const day = createElementWithClass('div', 'day');
-        const currentDay = createElementWithClass('p');
-        currentDay.textContent = 'Today';
-        day.appendChild(currentDay);
-        container.appendChild(day);
+        let TodoHeader = createTodoHeader('Today');
+        container.appendChild(TodoHeader);
 
         const todoContainer = createElementWithClass('div', 'todoContainer');
         container.appendChild(todoContainer);
+        let notTodayTodos = [];
 
         Todo.todoList.forEach((element, index) => {
             if (element.dueDate !== new Date().toLocaleDateString('en-gb') && element.dueDate !== null) {
+                notTodayTodos.push(element);
                 return;
             }
             const todoElement = createTodoElement(element, index);
             todoContainer.appendChild(todoElement);
         });
+
+        TodoHeader = createTodoHeader('Back log');
+        container.appendChild(TodoHeader);
+
+        const todoContainerNotToday = createTodoContainer('notToday');
+        container.appendChild(todoContainerNotToday);
+
+        notTodayTodos.forEach((element, index) => {
+            const todoElement = createTodoElement(element, index);
+            todoContainerNotToday.appendChild(todoElement);
+        })
 
         addEventListener();
     }
