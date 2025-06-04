@@ -8,18 +8,32 @@ class Todo {
     #subtasks;
     static #todoList = [];
 
-    constructor(title, description, priority='Normal', dueDate=null){
-        this.#title = title,
-        this.#description = description,
-        this.#priority = priority,
-        this.#dueDate = dueDate,
-        this.#labels = []
-        this.#project = 'default',
+    constructor(
+        title,
+        description,
+        priority = 'Normal',
+        dueDate = null,
+        labels = [],
+        project = 'default'
+    ) {
+        this.#title = title;
+        this.#description = description;
+        this.#priority = priority;
+        this.#dueDate = dueDate;
+        this.#labels = [...labels];
+        this.#project = project;
         this.#subtasks = [];
     }
 
-    static new(title, description, priority, dueDate, labels, project){
-        const newTodo =  new Todo(title, description, priority, dueDate, labels, project);
+    static new(
+        title,
+        description,
+        priority = 'Normal',
+        dueDate = null,
+        labels = [],
+        project = 'default'
+    ) {
+        const newTodo = new Todo(title, description, priority, dueDate, labels, project);
         this.#todoList.push(newTodo);
         return newTodo;
     }
