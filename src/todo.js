@@ -81,7 +81,6 @@ class Todo {
     get subtasks(){
         return this.#subtasks;
     }
-
-};
+}
 
 export default Todo;

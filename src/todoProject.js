@@ -3,6 +3,7 @@ class Project {
     #description;
     #startDate;
     #labels;
+    static #projectList = [];
 
     constructor(name, description, startDate=null, labels){
         this.#name = name;
@@ -12,7 +13,13 @@ class Project {
     }
 
     static new(name, description, startDate, labels){
-        return new Project(name, description, startDate, labels);
+        const project = new Project(name, description, startDate, labels);
+        this.#projectList.push(project);
+        return project;
+    }
+
+    static get projectList(){
+        return this.#projectList;
     }
 
     get name(){
@@ -49,4 +56,4 @@ class Project {
 
 }
 
-export default Project
+export default Project;

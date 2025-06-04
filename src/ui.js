@@ -6,10 +6,12 @@ import sidebarIcon from './Assets/sidebar.png';
 import addTaskIcon from './Assets/plus-circle-custom.png';
 import closeIcon from './Assets/close.png';
 
+
 (function main(){
 
     const newTodo = Todo.new('Take the bins out','Take the bins out for Mum & Dad','Normal',null,null)
     newTodo.addLabel('Chores')
+    Project.new('Home','Default project',null,[])
 
 
     const closeImg = document.querySelector('.close').src = closeIcon
@@ -18,6 +20,7 @@ import closeIcon from './Assets/close.png';
 
     //TODO refactor this whole function, need to seperate into a todo and just the header bar. initialRender() or something like that.
     renderTodoList();
+    updateProjectList();
     addEventListener();
     
     function renderTodoList() {
@@ -82,11 +85,24 @@ import closeIcon from './Assets/close.png';
     
     
         const button = document.querySelector('.newTodo');
-    
+
         const addIcon = new Image();
         addIcon.src = addTaskIcon;
         addIcon.classList.add('addTaskIcon');
         button.prepend(addIcon);
+    }
+
+    function updateProjectList(){
+        const list = document.querySelector('.projectList');
+        list.innerHTML = '';
+        Project.projectList.forEach((project) => {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '#';
+            link.textContent = project.name;
+            li.appendChild(link);
+            list.appendChild(li);
+        });
     }
     
     function addEventListener() {
@@ -105,13 +121,46 @@ import closeIcon from './Assets/close.png';
 
         })
 
+        const formContainer = document.querySelector('.form-container');
+        const taskForm = document.querySelector('.task-form');
+        const projectForm = document.querySelector('.project-form');
+
         document.querySelector('.newTodo').addEventListener('click', function(e) {
-            const formContainer = document.querySelector('.form-container');
             formContainer.classList.toggle('hidden');
+            taskForm.classList.remove('hidden');
+            projectForm.classList.add('hidden');
+        })
+
+        document.querySelector('.newProject').addEventListener('click', function(e){
+            formContainer.classList.toggle('hidden');
+            projectForm.classList.remove('hidden');
+            taskForm.classList.add('hidden');
+        })
+
+        taskForm.addEventListener('submit', function(e){
+            e.preventDefault();
+            const title = document.querySelector('#title').value;
+            const description = document.querySelector('#description').value;
+            const priority = document.querySelector('#priority').value;
+            const dueDate = document.querySelector('#duedate').value;
+            Todo.new(title, description, priority, dueDate, []);
+            renderTodoList();
+            taskForm.reset();
+            formContainer.classList.add('hidden');
+        })
+
+        projectForm.addEventListener('submit', function(e){
+            e.preventDefault();
+            const name = document.querySelector('#project-name').value;
+            const description = document.querySelector('#project-description').value;
+            const start = document.querySelector('#project-start').value;
+            Project.new(name, description, start, []);
+            updateProjectList();
+            projectForm.reset();
+            formContainer.classList.add('hidden');
         })
 
         document.querySelector('.close').addEventListener('click', function(e) {
-            const formContainer = document.querySelector('.form-container');
             formContainer.classList.toggle('hidden');
         })
     }
